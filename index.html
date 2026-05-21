@@ -597,7 +597,13 @@
         });
 
         const activeThumb = document.querySelector(`.thumb[data-index="${current}"]`);
-        activeThumb?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        activeThumb?.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+          // Keep the page anchored at the top; only nudge the thumbnail rail.
+          container: "nearest"
+        });
       }
 
       slides.forEach((src, index) => {
