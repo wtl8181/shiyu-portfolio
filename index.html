@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>石玉作品集</title>
+    <meta name="description" content="石玉作品集，10年UI/UX全链路设计经验，AIGC漫剧爱好者，绘画（国画）专业。">
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #11140f;
+        --muted: #5f665c;
+        --paper: #f4f1e8;
+        --cream: #fffaf0;
+        --acid: #c8ff35;
+        --moss: #19362d;
+        --green: #0f6b4b;
+        --line: rgba(17, 20, 15, 0.16);
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .topbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 28px;
+        color: var(--white);
+        mix-blend-mode: difference;
+      }
+
+      .brand {
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-decoration: none;
+      }
+
+      .topnav {
+        display: flex;
+        gap: 18px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .topnav a {
+        text-decoration: none;
+      }
+
+      .hero {
+        min-height: min(76svh, 720px);
+        display: grid;
+        align-items: center;
+        padding: 52px 24px 40px;
+        color: var(--white);
+        background:
+          linear-gradient(180deg, rgba(6, 10, 8, 0.12), rgba(6, 10, 8, 0.9)),
+          linear-gradient(90deg, rgba(6, 10, 8, 0.92), rgba(6, 10, 8, 0.3)),
+          url("assets/slides/slide-01.png");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-inner,
+      .section-inner {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+      }
+
+      .hero-inner {
+        transform: translateY(22px);
+      }
+
+      .kicker {
+        margin: 0 0 16px;
+        color: var(--acid);
+        font-size: 14px;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 980px;
+        margin: 0;
+        font-size: clamp(58px, 12vw, 148px);
+        line-height: 0.86;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        max-width: 760px;
+        margin: 26px 0 34px;
+        font-size: clamp(17px, 2vw, 24px);
+        font-weight: 650;
+        line-height: 1.32;
+        opacity: 0.94;
+      }
+
+      .subtitle span {
+        display: inline-block;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .button {
+        min-height: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        border: 1px solid rgba(255, 255, 255, 0.52);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 850;
+        backdrop-filter: blur(12px);
+      }
+
+      .button.primary {
+        border-color: var(--acid);
+        background: var(--acid);
+        color: var(--ink);
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: 100px;
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .meta-item {
+        min-height: 86px;
+        padding: 14px 16px;
+        background: rgba(5, 8, 7, 0.62);
+      }
+
+      .meta-item strong {
+        display: block;
+        color: var(--acid);
+        font-size: clamp(28px, 5vw, 54px);
+        line-height: 1;
+      }
+
+      .meta-item span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.82);
+        font-weight: 700;
+      }
+
+      .deck-head h2 {
+        margin: 0;
+        font-size: clamp(26px, 4vw, 46px);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .section-kicker {
+        margin: 0 0 12px;
+        color: #ff5d57;
+        font-size: clamp(30px, 4.2vw, 44px);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .video-head .section-kicker {
+        color: #000000;
+      }
+
+      .deck-head .section-kicker {
+        color: #ffffff;
+      }
+
+      .deck-section {
+        padding: 28px 24px 86px;
+        background: #0b100d;
+        color: var(--white);
+      }
+
+      .deck-head {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .deck {
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 18px;
+        background: #050806;
+        box-shadow: 0 28px 72px rgba(0, 0, 0, 0.42);
+      }
+
+      .slide-stage {
+        position: relative;
+        display: grid;
+        place-items: center;
+        aspect-ratio: 16 / 9;
+        background: #020403;
+      }
+
+      .slide-stage img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #020403;
+      }
+
+      .nav-button {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+        width: 48px;
+        height: 72px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--white);
+        font-size: 36px;
+        line-height: 1;
+        cursor: pointer;
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-button:hover,
+      .nav-button:focus-visible {
+        background: var(--acid);
+        color: var(--ink);
+        outline: 0;
+      }
+
+      .nav-button.prev {
+        left: 18px;
+        transform: translateY(-50%);
+      }
+
+      .nav-button.next {
+        right: 18px;
+        transform: translateY(-50%);
+      }
+
+      .deck-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .counter {
+        min-width: 84px;
+        color: var(--acid);
+        font-variant-numeric: tabular-nums;
+        font-weight: 900;
+      }
+
+      .deck-link {
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 14px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 999px;
+        color: var(--white);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .thumbs {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 132px;
+        gap: 10px;
+        padding: 0 16px 16px;
+        overflow-x: auto;
+        scrollbar-color: rgba(200, 255, 53, 0.8) transparent;
+      }
+
+      .thumb {
+        padding: 0;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .thumb[aria-current="true"] {
+        border-color: var(--acid);
+      }
+
+      .thumb img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .video-section {
+        padding: 28px 24px 96px;
+        background: var(--paper);
+      }
+
+      .video-head {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .video-head h2 {
+        margin: 0;
+        color: var(--green);
+        font-size: clamp(26px, 4vw, 46px);
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+
+      .video-item {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--cream);
+      }
+
+      video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        background: #121722;
+      }
+
+      .video-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        color: rgba(17, 20, 15, 0.88);
+        font-size: 16px;
+        font-weight: 850;
+      }
+
+      .video-title span {
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-transform: lowercase;
+      }
+
+      footer {
+        padding: 32px 24px 42px;
+        background: #0b100d;
+        color: rgba(255, 255, 255, 0.7);
+        text-align: center;
+      }
+
+      @media (max-width: 880px) {
+        .topbar {
+          padding: 16px 18px;
+        }
+
+        .topnav {
+          display: none;
+        }
+
+        .hero {
+          padding-inline: 18px;
+        }
+
+        .hero-meta,
+        .deck-head,
+        .video-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .video-head {
+          display: block;
+        }
+
+        .video-head p {
+          margin-top: 12px;
+        }
+
+        .thumbs {
+          grid-auto-columns: 104px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .hero {
+          min-height: auto;
+          padding-top: 56px;
+        }
+
+        .hero-inner {
+          transform: translateY(34px);
+        }
+
+        .subtitle {
+          max-width: 22em;
+          margin: 18px 0 24px;
+        }
+
+        .actions {
+          display: grid;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .nav-button {
+          width: 38px;
+          height: 58px;
+          font-size: 30px;
+        }
+
+        .deck-toolbar {
+          display: block;
+        }
+
+        .deck-link {
+          width: 100%;
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="kicker">UI/UX Portfolio · AIGC Storytelling</p>
+        <h1>石玉作品集</h1>
+        <p class="subtitle"><span>10年UI/UX全链路设计经验</span> <span>| AIGC漫剧爱好者 · 绘画（国画）专业</span></p>
+        <nav class="actions" aria-label="作品集快捷操作">
+          <a class="button primary" href="#videos">播放视频作品</a>
+          <a class="button" href="#deck">查看作品集</a>
+        </nav>
+        <div class="hero-meta" aria-label="个人能力摘要">
+          <div class="meta-item">
+            <strong>10+</strong>
+            <span>年全链路设计经验</span>
+          </div>
+          <div class="meta-item">
+            <strong>46</strong>
+            <span>页精选项目复盘</span>
+          </div>
+          <div class="meta-item">
+            <strong>AIGC</strong>
+            <span>漫剧与视觉叙事探索</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos" class="video-section">
+      <div class="section-inner">
+        <div class="video-head">
+          <p class="section-kicker">AIGC漫剧练习作品</p>
+        </div>
+        <div class="video-grid">
+          <article class="video-item">
+            <video controls preload="metadata" src="35440_1779245243.mp4"></video>
+            <div class="video-title">《东方绮梦录·狐桥鲤影》<span>mp4</span></div>
+          </article>
+          <article class="video-item">
+            <video controls preload="metadata" src="35441_1779245268.mp4"></video>
+            <div class="video-title">《镜中残像》<span>mp4</span></div>
+          </article>
+          <article class="video-item">
+            <video controls preload="metadata" src="35442_1779245359.mp4"></video>
+            <div class="video-title">《湘水之约:千年回响》<span>mp4</span></div>
+          </article>
+          <article class="video-item">
+            <video controls preload="metadata" src="35459_1779246791.mp4"></video>
+            <div class="video-title">《倩女幽魂》<span>mp4</span></div>
+          </article>
+          <article class="video-item">
+            <video controls preload="metadata" src="35462_1779247074.mp4"></video>
+            <div class="video-title">《山家暮色》<span>mp4</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="deck" class="deck-section">
+      <div class="section-inner">
+        <div class="deck-head">
+          <p class="section-kicker">UI/UX设计作品集</p>
+        </div>
+        <div class="deck" data-deck>
+          <div class="slide-stage">
+            <button class="nav-button prev" type="button" data-prev aria-label="上一页">‹</button>
+            <img data-slide-image src="assets/slides/slide-01.png" alt="石玉作品集第 1 页">
+            <button class="nav-button next" type="button" data-next aria-label="下一页">›</button>
+          </div>
+          <div class="deck-toolbar">
+            <span class="counter" data-counter>01 / 46</span>
+            <a class="deck-link" href="10%E5%B9%B4%E7%BB%8F%E9%AA%8C-%E7%9F%B3%E7%8E%89-%E4%BD%9C%E5%93%81%E9%9B%86.pdf" target="_blank" rel="noopener">下载原 PDF</a>
+          </div>
+          <div class="thumbs" data-thumbs aria-label="作品集页面缩略图"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 石玉作品集</span>
+    </footer>
+
+    <script>
+      window.scrollTo(0, 0);
+
+      const slideCount = 46;
+      const slides = Array.from({ length: slideCount }, (_, index) => {
+        const number = String(index + 1).padStart(2, "0");
+        return `assets/slides/slide-${number}.png`;
+      });
+
+      const image = document.querySelector("[data-slide-image]");
+      const counter = document.querySelector("[data-counter]");
+      const thumbs = document.querySelector("[data-thumbs]");
+      const prev = document.querySelector("[data-prev]");
+      const next = document.querySelector("[data-next]");
+      let current = 0;
+
+      function setSlide(index) {
+        current = (index + slides.length) % slides.length;
+        image.src = slides[current];
+        image.alt = `石玉作品集第 ${current + 1} 页`;
+        counter.textContent = `${String(current + 1).padStart(2, "0")} / ${slideCount}`;
+
+        document.querySelectorAll(".thumb").forEach((thumb, thumbIndex) => {
+          thumb.setAttribute("aria-current", String(thumbIndex === current));
+        });
+
+        const activeThumb = document.querySelector(`.thumb[data-index="${current}"]`);
+        activeThumb?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+
+      slides.forEach((src, index) => {
+        const button = document.createElement("button");
+        button.className = "thumb";
+        button.type = "button";
+        button.dataset.index = String(index);
+        button.setAttribute("aria-label", `查看第 ${index + 1} 页`);
+
+        const thumbImage = document.createElement("img");
+        thumbImage.src = src;
+        thumbImage.alt = "";
+        thumbImage.loading = index < 6 ? "eager" : "lazy";
+
+        button.appendChild(thumbImage);
+        button.addEventListener("click", () => setSlide(index));
+        thumbs.appendChild(button);
+      });
+
+      prev.addEventListener("click", () => setSlide(current - 1));
+      next.addEventListener("click", () => setSlide(current + 1));
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") setSlide(current - 1);
+        if (event.key === "ArrowRight") setSlide(current + 1);
+      });
+
+      setSlide(0);
+    </script>
+  </body>
+</html>
